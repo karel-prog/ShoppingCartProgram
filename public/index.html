@@ -1,0 +1,526 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Shopping Cart</title>
+
+  <!-- Favicons -->
+  <link href="public/images/search.png" rel="icon">
+  <link href="public/images/search.png" rel="apple-touch-icon">
+  <!-- Vendor CSS Files -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+     <!-- Template Main CSS Files -->
+  <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+    <div class="card">
+        <div class="row">
+             <div class="col-md-4 summary">
+                <div><h5><b>Summary</b></h5></div>
+                <hr>
+                <div class="row">
+                    <div class="col" style="padding-left:0;" id="nbitems"></div>
+                    <div class="col" style="padding-left:0;" id="nbitemschange" style="display: none;"></div>
+
+                    <div class="col text-right" id="totalcost"> </div>
+                    <div class="col text-right" id="totalcostchange" style="display: none;"> </div>
+
+                </div>
+                <form>
+                    <p>SHIPPING </p>
+                    <select><option class="text-muted">Delivery-More-Than-Four-Products &dollar;5.00</option></select>
+                    <p>GIVE CODE</p>
+                    <input id="code" placeholder="Enter your code">
+                </form>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right" id="FINALcost"></div>
+                    <div class="col text-right" id="FINALcostchange" style="display: none;"></div>
+
+                </div>
+                <button class="btn">CHECKOUT</button>
+            </div>
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>BookShop Cart</b></h4></div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom" id="div1">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="/images/harry-potter-chambre-secrets-couv-e1474359976985.webp"></div>
+                        <div class="col">
+                            <div class="row text-muted" id="title11"></div>
+                            <div class="row" id="auther12"></div>
+                            <div class="row" >&dollar;20</div>
+                        </div>
+                        <div class="col " >
+
+                            <input type="number" id="tentacles1" name="tentacles"
+                            min="1" max="100" style="width: auto; height: auto;margin-top: 25%; " onclick="quantity(1,value)" >
+
+                        </div>
+                        <div class="col" id="price13"></div>
+                        <div><button class="btn" onclick="deleteelement(1)"><i class="fa fa-trash" ></i></button></div>
+                    </div>
+                </div>
+                <div class="row"id="div2">
+                    <div class="row main align-items-center" >
+                        <div class="col-2"><img class="img-fluid" src="/images/romeojuliet.jpg"></div>
+                        <div class="col">
+                            <div class="row text-muted" id="title21"></div>
+                            <div class="row" id="auther22"></div>
+                            <div class="row" >&dollar;10</div>
+
+                            
+                        </div>
+                        <div class="col">
+                            <input type="number" id="tentacles2" name="tentacles"
+                            min="1" max="100" style="width: auto; height: auto; "onclick="quantity(2,value)"value="1">
+                        </div>
+                        <div class="col" id="price23"> <span class="close">&#10005;</span></div>
+                        <div><button class="btn"onclick="deleteelement(2)"><i class="fa fa-trash"></i></button></div>
+
+                    </div>
+                </div>
+                <div class="row border-top border-bottom" id="div3">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="/images/divergent1.png"></div>
+                        <div class="col">
+                            <div class="row text-muted" id="title31"></div>
+                            <div class="row" id="auther32"></div>
+                            <div class="row" >&dollar;15</div>
+
+                        </div>
+                        <div class="col">
+                            <input type="number" id="tentacles3" name="tentacles"
+                            min="1" max="100" style="width: auto; height: auto; "onclick="quantity(3,value)" value="1">
+                        </div>
+                        <div class="col" id="price33"> <span class="close">&#10005;</span></div>
+                        <div><button class="btn"onclick="deleteelement(3)"><i class="fa fa-trash"></i></button></div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row main align-items-center" id="div4">
+                        <div class="col-2"><img class="img-fluid" src="/images/61huUhmI2YL._SX329_BO1,204,203,200_.jpg"></div>
+                        <div class="col">
+                            <div class="row text-muted" id="title41"></div>
+                            <div class="row" id="auther42"></div>
+                            <div class="row" >&dollar;20</div>
+
+                        </div>
+                        <div class="col">
+                            <input type="number" id="tentacles4" name="tentacles"
+                            min="1" max="100" style="width: auto; height: auto; " onclick="quantity(4,value)"value="1">
+                        </div>
+                        <div class="col" id="price43"><span class="close">&#10005;</span></div>
+                        <div><button class="btn"onclick="deleteelement(4)"><i class="fa fa-trash" ></i></button></div>
+
+                    </div>
+                </div>
+                <div class="back-to-shop"><a href="#" style="font-style: italic; ">&leftarrow;  Back to shop</a><span class="text-muted"></span></div>
+            </div>
+           
+        </div>
+
+    </div>
+    <script>
+ $('document').ready( async function()
+  {
+
+      var options = { method: 'POST',
+  headers:{ 'Content-Type': 'application/json' },
+}
+    await fetch('/displaybooks',options)
+.then(res => res.json())
+.then(async function(res) {
+
+console.log("c est recu");
+console.log(res.file);
+var booksarray= JSON.parse(res.file);
+console.log(booksarray);
+
+////////////first book//////////
+
+if(booksarray[0].exist==="false"){document.getElementById('div1').style.display="none";
+
+
+}
+if(booksarray[0].exist==="true"){
+document.getElementById('title11').innerHTML=`${booksarray[0].title}`;
+
+document.getElementById('auther12').innerHTML=`${booksarray[0].auther}`;
+
+document.getElementById('price13').innerHTML=`${booksarray[0].priceall}`;
+document.getElementById('price13').innerHTML=`${booksarray[0].priceall}`+"$";
+document.getElementById('tentacles1').value=`${booksarray[0].quantity}`;}
+
+
+
+////////////Second book//////////
+
+if(booksarray[1].exist==="false"){document.getElementById('div2').style.display="none";
+}
+if(booksarray[1].exist==="true"){
+document.getElementById('title21').innerHTML=`${booksarray[1].title}`;
+
+document.getElementById('auther22').innerHTML=`${booksarray[1].auther}`;
+
+document.getElementById('price23').innerHTML=`${booksarray[1].priceall}`+"$";
+document.getElementById('tentacles2').value=`${booksarray[1].quantity}`;}
+
+////////////3 book//////////
+
+if(booksarray[2].exist==="false"){document.getElementById('div3').style.display="none";
+}
+if(booksarray[2].exist==="true"){
+document.getElementById('title31').innerHTML=`${booksarray[2].title}`;
+
+document.getElementById('auther32').innerHTML=`${booksarray[2].auther}`;
+
+document.getElementById('price33').innerHTML=`${booksarray[2].priceall}`+"$";
+document.getElementById('tentacles3').value=`${booksarray[2].quantity}`;}
+
+////////////4 book//////////
+
+if(booksarray[3].exist==="false"){document.getElementById('div4').style.display="none";
+}
+if(booksarray[3].exist==="true"){
+document.getElementById('title41').innerHTML=`${booksarray[3].title}`;
+
+document.getElementById('auther42').innerHTML=`${booksarray[3].auther}`;
+
+document.getElementById('price43').innerHTML=`${booksarray[3].priceall}`+"$";
+document.getElementById('tentacles4').value=`${booksarray[3].quantity}`;}
+///////////////summary///////////////////////////////////
+
+var sum=parseInt(booksarray[0].priceall)+parseInt(booksarray[1].priceall)+parseInt(booksarray[2].priceall)+parseInt(booksarray[3].priceall);
+var quantityfinal=parseInt(booksarray[0].quantity)+parseInt(booksarray[1].quantity)+parseInt(booksarray[2].quantity)+parseInt(booksarray[3].quantity);
+
+document.getElementById('totalcost').innerHTML=`${sum }`;
+document.getElementById('nbitems').innerHTML=`${quantityfinal }`;
+
+if(booksarray[0].exist==="false"){
+    var sum1=document.getElementById('totalcost').innerHTML;
+    var sum2=parseInt(booksarray[0].priceall);
+    var sum=sum1-sum2;
+    
+document.getElementById('totalcost').innerHTML=`${sum}`;
+document.getElementById('FINALcost').innerHTML=`${sum}`;
+var quantity1=document.getElementById('nbitems').innerHTML;
+var quantity2=parseInt(booksarray[0].quantity);
+    var quantityfinal=quantity1-quantity2;
+    
+document.getElementById('nbitems').innerHTML=`${quantityfinal}`;
+
+}
+if(booksarray[1].exist==="false"){
+    var sum1=document.getElementById('totalcost').innerHTML;
+    var sum2=parseInt(booksarray[1].priceall);
+    var sum=sum1-sum2;
+    
+document.getElementById('totalcost').innerHTML=`${sum}`;
+document.getElementById('FINALcost').innerHTML=`${sum}`;
+
+var quantity1=document.getElementById('nbitems').innerHTML;
+var quantity2=parseInt(booksarray[1].quantity);
+    var quantityfinal=quantity1-quantity2;
+    
+document.getElementById('nbitems').innerHTML=`${quantityfinal}`;
+
+}
+if(booksarray[2].exist==="false"){
+    var sum1=document.getElementById('totalcost').innerHTML;
+    var sum2=parseInt(booksarray[2].priceall);
+    var sum=sum1-sum2;
+    
+document.getElementById('totalcost').innerHTML=`${sum}`;
+document.getElementById('FINALcost').innerHTML=`${sum}`;
+
+var quantity1=document.getElementById('nbitems').innerHTML;
+var quantity2=parseInt(booksarray[2].quantity);
+    var quantityfinal=quantity1-quantity2;
+    
+document.getElementById('nbitems').innerHTML=`${quantityfinal}`;
+
+}
+if(booksarray[3].exist==="false"){
+    var sum1=document.getElementById('totalcost').innerHTML;
+    var sum2=parseInt(booksarray[3].priceall);
+    var sum=sum1-sum2;
+    
+document.getElementById('totalcost').innerHTML=`${sum}`;
+document.getElementById('FINALcost').innerHTML=`${sum}`;
+
+var quantity1=document.getElementById('nbitems').innerHTML;
+var quantity2=parseInt(booksarray[3].quantity);
+    var quantityfinal=quantity1-quantity2;
+    
+document.getElementById('nbitems').innerHTML=`${quantityfinal}`;
+
+}
+
+
+document.getElementById('FINALcost').innerHTML=`${sum }`;
+
+})
+
+
+
+  });
+  var quantity= async function quantity(id,newvalue){
+console.log("hYYYYY");
+console.log("id"+""+id);
+console.log("id"+""+newvalue);
+let theid=id.toString();
+var updatebook={"id":theid ,"quantity":newvalue};
+console.log(updatebook);
+  var options = { method: 'POST',
+  headers:{ 'Content-Type': 'application/json' },
+ body: JSON.stringify(updatebook)
+}
+
+//////change quantity selector
+await fetch('/changequantity',options)
+.then(res => res.json())
+.then(async function(res) {
+    console.log(res.filedb);
+var booksarray= JSON.parse(res.filedb);
+console.log(booksarray);
+console.log(id);
+
+if(booksarray[0].id===theid){
+    console.log("je rentre");
+document.getElementById('price13').innerHTML=`${booksarray[0].priceall}`+"$";}
+
+if(booksarray[1].id===theid){
+    console.log("je rentre");
+document.getElementById('price23').innerHTML=`${booksarray[1].priceall}`+"$";}
+
+if(booksarray[2].id===theid){
+    console.log("je rentre");
+document.getElementById('price33').innerHTML=`${booksarray[2].priceall}`+"$";}
+
+if(booksarray[3].id===theid){
+    console.log("je rentre");
+document.getElementById('price43').innerHTML=`${booksarray[3].priceall}`+"$";}
+var sum=parseInt(booksarray[0].priceall)+parseInt(booksarray[1].priceall)+parseInt(booksarray[2].priceall)+parseInt(booksarray[3].priceall);
+
+document.getElementById('totalcost').innerHTML=`${sum }`;
+document.getElementById('FINALcost').innerHTML=`${sum }`;
+
+var quantityfinal=parseInt(booksarray[0].quantity)+parseInt(booksarray[1].quantity)+parseInt(booksarray[2].quantity)+parseInt(booksarray[3].quantity);
+
+document.getElementById('nbitems').innerHTML=`${quantityfinal}`;
+
+})
+.catch(error => window.alert('Error:', error));
+
+
+
+  }
+  var deleteelement=async function deleteelement(id){
+
+    console.log("id"+""+id);
+let theid=id.toString();
+var deletebook={"id":theid};
+console.log(deletebook);
+  var options = { method: 'POST',
+  headers:{ 'Content-Type': 'application/json' },
+ body: JSON.stringify(deletebook)
+}
+
+////////////////:delete product
+await fetch('/deleteelement',options)
+.then(res => res.json())
+.then(async function(res) {
+    console.log(res.filedb);
+var booksarray= JSON.parse(res.filedb);
+console.log(booksarray);
+console.log(id);
+
+
+if(theid==="1"){
+    
+document.getElementById('div1').style.display="none";
+    console.log("hyyy");
+    
+var sum= document.getElementById('totalcost').innerHTML;
+var quantity=document.getElementById('nbitems').innerHTML;
+
+console.log(sum);
+console.log(quantity);
+
+var priceall1=parseInt(booksarray[0].priceall);
+ var sum1=sum-priceall1;
+ console.log(sum1);
+
+ var sum=document.getElementById('totalcost').innerHTML=`${sum1}`;
+ console.log(sum);
+ document.getElementById('totalcost').style.display="none";
+ 
+ document.getElementById('totalcostchange').style.display="block";
+ document.getElementById('totalcostchange').innerHTML=`${sum1}`;
+ document.getElementById('FINALcost').style.visibility="hidden";
+
+
+ document.getElementById('FINALcostchange').style.display="block";
+ document.getElementById('FINALcostchange').innerHTML=`${sum1}`;
+
+ var quantity1=parseInt(booksarray[0].quantity);
+
+ var quantity2=quantity-quantity1;
+ console.log(quantity2);
+ document.getElementById('nbitems').innerHTML=`${quantity2}`;
+
+ document.getElementById('nbitems').style.display="none";
+ document.getElementById('nbitemschange').style.display="block";
+
+ document.getElementById('nbitemschange').innerHTML=`${quantity2}`;
+
+
+
+
+
+ 
+}
+if(theid==="2"){
+    
+document.getElementById('div2').style.display="none";
+
+
+var sum1= document.getElementById('totalcost').innerHTML;
+var quantity=document.getElementById('nbitems').innerHTML;
+
+console.log(sum);
+console.log(quantity);
+console.log("sum"+sum1);
+var priceall2=parseInt(booksarray[1].priceall);
+ var sum1=sum1-priceall2;
+ console.log(sum1);
+
+ var sum=document.getElementById('totalcost').innerHTML=`${sum1}`;
+ console.log(sum);
+ document.getElementById('totalcost').style.display="none";
+ 
+ document.getElementById('totalcostchange').style.display="block";
+ document.getElementById('totalcostchange').innerHTML=`${sum1}`;
+ document.getElementById('FINALcost').style.visibility="hidden";
+
+
+ document.getElementById('FINALcostchange').style.display="block";
+ document.getElementById('FINALcostchange').innerHTML=`${sum1}`;
+
+ 
+ var quantity1=parseInt(booksarray[1].quantity);
+
+ var quantity2=quantity-quantity1;
+ console.log(quantity2);
+ document.getElementById('nbitems').innerHTML=`${quantity2}`;
+
+ document.getElementById('nbitems').style.display="none";
+ document.getElementById('nbitemschange').style.display="block";
+
+ document.getElementById('nbitemschange').innerHTML=`${quantity2}`;
+
+}
+if(theid==="3"){
+    document.getElementById('div3').style.display="none";
+
+
+var sum1= document.getElementById('totalcost').innerHTML;
+var quantity=document.getElementById('nbitems').innerHTML;
+
+console.log(sum);
+console.log(quantity);
+console.log("sum"+sum1);
+var priceall2=parseInt(booksarray[2].priceall);
+ var sum1=sum1-priceall2;
+ console.log(sum1);
+
+ var sum=document.getElementById('totalcost').innerHTML=`${sum1}`;
+ console.log(sum);
+ document.getElementById('totalcost').style.display="none";
+ 
+ document.getElementById('totalcostchange').style.display="block";
+ document.getElementById('totalcostchange').innerHTML=`${sum1}`;
+ document.getElementById('FINALcost').style.visibility="hidden";
+
+
+ document.getElementById('FINALcostchange').style.display="block";
+ document.getElementById('FINALcostchange').innerHTML=`${sum1}`;
+ 
+ 
+ var quantity1=parseInt(booksarray[2].quantity);
+
+ var quantity2=quantity-quantity1;
+ console.log(quantity2);
+ document.getElementById('nbitems').innerHTML=`${quantity2}`;
+
+ document.getElementById('nbitems').style.display="none";
+ document.getElementById('nbitemschange').style.display="block";
+
+ document.getElementById('nbitemschange').innerHTML=`${quantity2}`;
+}
+if(theid==="4"){
+    document.getElementById('div4').style.display="none";
+
+
+var sum1= document.getElementById('totalcost').innerHTML;
+var quantity=document.getElementById('nbitems').innerHTML;
+
+console.log(sum);
+console.log(quantity);
+console.log("sum"+sum1);
+var priceall2=parseInt(booksarray[3].priceall);
+ var sum1=sum1-priceall2;
+ console.log(sum1);
+
+ var sum=document.getElementById('totalcost').innerHTML=`${sum1}`;
+ console.log(sum);
+ document.getElementById('totalcost').style.display="none";
+ 
+ document.getElementById('totalcostchange').style.display="block";
+ document.getElementById('totalcostchange').innerHTML=`${sum1}`;
+ document.getElementById('FINALcost').style.visibility="hidden";
+
+
+ document.getElementById('FINALcostchange').style.display="block";
+ document.getElementById('FINALcostchange').innerHTML=`${sum1}`;
+ 
+ 
+ var quantity1=parseInt(booksarray[3].quantity);
+
+ var quantity2=quantity-quantity1;
+ console.log(quantity2);
+ document.getElementById('nbitems').innerHTML=`${quantity2}`;
+
+ document.getElementById('nbitems').style.display="none";
+ document.getElementById('nbitemschange').style.display="block";
+
+ document.getElementById('nbitemschange').innerHTML=`${quantity2}`;
+}
+document.getElementById('totalcost').innerHTML=`${sum }`;
+document.getElementById('FINALcost').innerHTML=`${sum }`;
+
+
+
+
+
+})
+.catch(error => window.alert('Error:', error));
+
+
+  }
+
+    </script>
+
+
+</body>
+</html>
